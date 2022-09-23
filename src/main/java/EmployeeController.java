@@ -11,32 +11,32 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/employee/add")
-    public String add(@RequestParam("firstName") String firstName,
-                      @RequestParam("lastName") String lastName) {
+    public Employee add(@RequestParam("firstName") String firstName,
+                      @RequestParam("lastName") String lastName) throws RuntimeException {
         if (!firstName.equals(null) && !lastName.equals(null)) {
             return employeeService.addEmployee(firstName, lastName);
         } else {
-            return "Error";
+            throw new RuntimeException("Error");
         }
     }
 
     @GetMapping(path = "/employee/remove")
-    public String remove(@RequestParam("firstName") String firstName,
-                         @RequestParam("lastName") String lastName) {
+    public Employee remove(@RequestParam("firstName") String firstName,
+                         @RequestParam("lastName") String lastName) throws RuntimeException {
         if (!firstName.equals(null) && !lastName.equals(null)) {
             return employeeService.removeEmployee(firstName, lastName);
         } else {
-            return "Error";
+            throw new RuntimeException("Error");
         }
     }
 
     @GetMapping(path = "/employee/search")
-    public String search(@RequestParam("firstName") String firstName,
-                         @RequestParam("lastName") String lastName) {
+    public Employee search(@RequestParam("firstName") String firstName,
+                         @RequestParam("lastName") String lastName) throws RuntimeException {
         if (!firstName.equals(null) && !lastName.equals(null)) {
             return employeeService.searchEmployee(firstName, lastName);
         } else {
-            return "Error";
+            throw new RuntimeException("Error");
         }
     }
 }
